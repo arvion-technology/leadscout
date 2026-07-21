@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>LeadScout — grounded lead research and outreach</title>
+  <meta name="description" content="Robots-aware crawl planning, explainable ICP scoring and citation-grounded outreach emails. Four pre-crawled fixtures, no API key." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230b0f1a'/><text x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='%23f5c26b' text-anchor='middle'>A</text></svg>" />
+  <link rel="stylesheet" href="arvion.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="aurora"></div>
+  <div class="grid-lines"></div>
+
+  <div class="app shell">
+    <aside class="sidebar">
+      <a class="brand" href="#leads" style="padding:6px 8px 14px">
+        <span class="brand-mark">A</span>
+        <span>
+          <span class="brand-word">LEADSCOUT</span>
+          <span class="brand-sub" style="display:block">by Arvion</span>
+        </span>
+      </a>
+
+      <div class="nav-label">Pipeline</div>
+      <a class="nav-item active" href="#leads" data-view="leads"><span class="nav-dot"></span>Research</a>
+      <a class="nav-item" href="#outreach" data-view="outreach"><span class="nav-dot"></span>Outreach draft</a>
+      <a class="nav-item" href="#scoring" data-view="scoring"><span class="nav-dot"></span>Scoring model</a>
+      <a class="nav-item" href="#crawl" data-view="crawl"><span class="nav-dot"></span>Crawl plan</a>
+
+      <div class="nav-label">Reference</div>
+      <a class="nav-item" href="https://github.com/arvion-technology/leadscout#readme" target="_blank" rel="noopener"><span class="nav-dot"></span>Documentation ↗</a>
+      <a class="nav-item" href="https://github.com/arvion-technology/leadscout/tree/main/src" target="_blank" rel="noopener"><span class="nav-dot"></span>Crawler design ↗</a>
+
+      <div style="flex:1"></div>
+      <div class="card flat pad-sm" style="margin-top:14px">
+        <div class="row" style="gap:8px">
+          <span class="badge green"><span class="dot pulse"></span>offline</span>
+          <span class="spacer"></span>
+          <span class="small muted mono">v1.0</span>
+        </div>
+        <p class="small muted" style="margin:8px 0 0">4 pre-crawled sites<br />Robots-aware, evidence-cited</p>
+      </div>
+    </aside>
+
+    <div style="min-width:0">
+      <header class="topbar">
+        <div class="eyebrow" style="margin:0">Lead research</div>
+        <span class="spacer"></span>
+        <span class="badge gold">explainable ICP</span>
+        <span class="badge blue">robots-aware</span>
+        <span class="badge green"><span class="dot pulse"></span>cited outreach</span>
+        <a class="btn sm" href="https://github.com/arvion-technology/leadscout" target="_blank" rel="noopener">GitHub ↗</a>
+        <div class="avatar" title="Demo workspace">AV</div>
+      </header>
+
+      <main class="main">
+        <!-- ============================================================ -->
+        <section data-view-panel="leads">
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Prospecting</div>
+              <h1>Research</h1>
+              <p class="lede">Four companies, pre-crawled. Every signal keeps the sentence and URL it came from, and the ICP score shows the points each factor earned.</p>
+            </div>
+            <span class="spacer"></span>
+            <span class="badge mono" id="rank-badge">–</span>
+          </div>
+
+          <div class="stat-grid" id="lead-stats" style="margin-bottom:16px"></div>
+
+          <div class="research-grid">
+            <div class="card pad-sm">
+              <div class="card-head" style="padding:6px 4px 0">
+                <div class="card-title">Leads</div>
+                <span class="spacer"></span>
+                <span class="small muted">by ICP score</span>
+              </div>
+              <div id="lead-list"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <div>
+                  <div class="card-title" id="signals-title">Signals</div>
+                  <div class="card-sub" id="signals-sub">–</div>
+                </div>
+                <span class="spacer"></span>
+                <span class="badge" id="industry-badge">–</span>
+              </div>
+              <div id="signals"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <div>
+                  <div class="card-title">ICP score</div>
+                  <div class="card-sub" id="score-sub">–</div>
+                </div>
+                <span class="spacer"></span>
+                <span class="badge" id="grade-badge">–</span>
+              </div>
+              <div class="score-hero">
+                <div class="score-number" id="score-number">0</div>
+                <div>
+                  <div class="score-verdict" id="score-verdict">–</div>
+                  <div class="small muted" id="score-detail">–</div>
+                </div>
+              </div>
+              <div class="factors" id="factors"></div>
+              <div class="divider"></div>
+              <div class="row small muted">
+                <span id="contact-line">–</span>
+                <span class="spacer"></span>
+                <a href="#scoring" data-view-link="scoring" class="link">Adjust weights →</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <section data-view-panel="outreach" hidden>
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Grounded outreach</div>
+              <h1>Outreach draft</h1>
+              <p class="lede">Every claim about the lead is numbered and links to the sentence it came from. If the score is too low, the draft is marked unsendable instead of being dressed up.</p>
+            </div>
+            <span class="spacer"></span>
+            <select class="select" id="outreach-lead" style="width:250px" aria-label="Lead"></select>
+            <span class="badge" id="sendable-badge">–</span>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)">
+            <div class="card">
+              <div class="card-head">
+                <div>
+                  <div class="card-title" id="email-subject">–</div>
+                  <div class="card-sub" id="email-to">–</div>
+                </div>
+                <span class="spacer"></span>
+                <button class="btn sm" id="copy-email">Copy email</button>
+              </div>
+              <div id="email-warning"></div>
+              <div class="email-body" id="email-body"></div>
+              <div class="divider"></div>
+              <div class="row small muted">
+                <span id="email-meta">–</span>
+              </div>
+            </div>
+
+            <div class="col" style="gap:16px">
+              <div class="card">
+                <div class="card-head"><div class="card-title">Claim ledger</div></div>
+                <div id="claims"></div>
+              </div>
+              <div class="card">
+                <div class="card-head"><div class="card-title">Lead</div></div>
+                <div id="outreach-lead-card"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <section data-view-panel="scoring" hidden>
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Model</div>
+              <h1>Scoring model</h1>
+              <p class="lede">Five weighted factors, 100 points when the weights add to 100. Move a slider and every lead is re-scored and re-ranked — the explanation changes with it.</p>
+            </div>
+            <span class="spacer"></span>
+            <button class="btn sm" id="reset-weights">Reset weights</button>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)">
+            <div class="card">
+              <div class="card-head"><div class="card-title">Weights</div><span class="spacer"></span><span class="small muted" id="weights-total">–</span></div>
+              <div id="weight-sliders"></div>
+              <div class="divider"></div>
+              <div class="small muted">
+                <div class="kv">
+                  <dt>Target industries</dt><dd id="profile-industries">–</dd>
+                  <dt>Target sizes</dt><dd id="profile-sizes">–</dd>
+                  <dt>Stack overlap</dt><dd id="profile-stacks">–</dd>
+                  <dt>Locations</dt><dd id="profile-locations">–</dd>
+                </div>
+              </div>
+            </div>
+
+            <div class="card pad-sm" style="padding:0">
+              <div style="padding:14px 16px 0"><div class="card-title">Live ranking</div></div>
+              <div id="ranking-table" style="margin-top:10px"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <section data-view-panel="crawl" hidden>
+          <div class="page-head">
+            <div>
+              <div class="eyebrow">Crawler</div>
+              <h1>Crawl plan</h1>
+              <p class="lede">The plan is computed before fetching: robots rules, depth, page budget and crawl delay. Blocked URLs stay in the table with the rule that blocked them.</p>
+            </div>
+            <span class="spacer"></span>
+            <span class="badge mono" id="crawl-summary">–</span>
+          </div>
+
+          <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)">
+            <div class="col" style="gap:16px">
+              <div class="card">
+                <div class="card-head"><div class="card-title">Limits</div></div>
+                <div class="control-row">
+                  <label for="crawl-depth">Max depth</label>
+                  <input type="range" id="crawl-depth" min="0" max="2" step="1" value="2" />
+                  <span class="mono" id="crawl-depth-value">2</span>
+                </div>
+                <div class="control-row">
+                  <label for="crawl-budget">Page budget</label>
+                  <input type="range" id="crawl-budget" min="1" max="8" step="1" value="8" />
+                  <span class="mono" id="crawl-budget-value">8</span>
+                </div>
+                <div class="control-row">
+                  <label for="crawl-lead">Lead</label>
+                  <select class="select" id="crawl-lead" style="flex:1"></select>
+                </div>
+                <div class="control-row">
+                  <label for="crawl-agent">Agent</label>
+                  <select class="select" id="crawl-agent" style="flex:1">
+                    <option>ArvionScout</option>
+                    <option>Googlebot</option>
+                  </select>
+                </div>
+                <div class="divider"></div>
+                <div class="small muted" id="crawl-notes">–</div>
+              </div>
+              <div class="card pad-sm" style="padding:0">
+                <div class="row" style="padding:12px 16px"><span class="card-title">robots.txt</span><span class="spacer"></span><span class="small mono muted" id="robots-domain">–</span></div>
+                <pre class="code robots" id="robots-text" style="border:0;border-top:1px solid var(--line);border-radius:0;margin:0"></pre>
+              </div>
+            </div>
+
+            <div class="card pad-sm" style="padding:0">
+              <div style="padding:14px 16px 0"><div class="card-title">Decisions</div></div>
+              <div id="crawl-table" style="margin-top:10px"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div class="demo-banner">
+    <span class="brand-mark" style="width:20px;height:20px;font-size:10px;border-radius:6px">A</span>
+    <span>Arvion Labs</span>
+    <span class="sep"></span>
+    <a href="https://arvion-technology.github.io/labs/">All projects</a>
+    <span class="sep"></span>
+    <a href="https://github.com/arvion-technology/leadscout" target="_blank" rel="noopener">source</a>
+  </div>
+
+  <script src="arvion.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
