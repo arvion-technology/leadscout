@@ -79,8 +79,7 @@ test("zeroing a weight removes it from the score's denominator", () => {
   const hiringFactor = noHiring.factors.find((factor) => factor.key === "hiring");
   assert.equal(hiringFactor.max, 0);
   assert.equal(hiringFactor.points, 0);
-  // The remaining factors are all full, so the normalised score stays 100 —
-  // the weight changed what the score is made of, not the verdict.
+  // The remaining factors are all full, so the normalised score stays 100, // the weight changed what the score is made of, not the verdict.
   assert.equal(noHiring.max, 70);
   assert.equal(noHiring.score, 100);
 });

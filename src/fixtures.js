@@ -2,7 +2,7 @@
 //
 // A live crawler would fetch these pages with rate limits and robots checks (see
 // src/robots.js and src/crawl.js). Shipping the HTML means the demo runs offline
-// and — more importantly — every extraction result is reproducible, which is
+// and, more importantly, every extraction result is reproducible, which is
 // what makes the scoring and the email citations testable.
 //
 // The companies are fictional. The markup deliberately mirrors real marketing
@@ -27,7 +27,7 @@ Sitemap: https://northwind-analytics.example/sitemap.xml`,
         depth: 0,
         html: `<!doctype html>
 <html><head>
-  <title>Northwind Analytics — product analytics for B2B SaaS</title>
+  <title>Northwind Analytics, product analytics for B2B SaaS</title>
   <meta name="description" content="Northwind Analytics helps B2B SaaS teams understand activation and retention without collecting personal data." />
   <meta name="generator" content="Next.js" />
   <script src="/_next/static/chunks/main.js"></script>
@@ -100,7 +100,7 @@ Disallow: /tms`,
         depth: 0,
         html: `<!doctype html>
 <html><head>
-  <title>Harbor Logistics — freight forwarding since 1987</title>
+  <title>Harbor Logistics, freight forwarding since 1987</title>
   <meta name="description" content="Ocean and air freight forwarding, customs clearance and warehousing." />
   <script src="/js/jquery-3.4.1.min.js"></script>
   <script src="/js/site.js"></script>
@@ -152,7 +152,7 @@ Sitemap: https://lumen-health.example/sitemap.xml`,
         depth: 0,
         html: `<!doctype html>
 <html><head>
-  <title>Lumen Health — care coordination for clinics</title>
+  <title>Lumen Health, care coordination for clinics</title>
   <meta name="description" content="Lumen Health builds care coordination software for outpatient clinics." />
   <script src="/static/js/react.production.min.js"></script>
   <script src="/static/js/app.js"></script>
@@ -162,7 +162,7 @@ Sitemap: https://lumen-health.example/sitemap.xml`,
   <p>Lumen Health is a healthtech company with 140 employees, headquartered in Austin with an engineering office in Kathmandu.</p>
   <p>Our platform is built with TypeScript and React, with a Node.js API and Postgres. We run on AWS in two regions for HIPAA reasons.</p>
   <p>We raised a $24M Series B in 2026 to expand into new clinic networks.</p>
-  <a href="/careers">We are hiring — 8 open roles</a>
+  <a href="/careers">We are hiring, 8 open roles</a>
   <p>Questions? <a href="mailto:partnerships@lumen-health.example">partnerships@lumen-health.example</a></p>
 </body></html>`,
       },
@@ -170,7 +170,7 @@ Sitemap: https://lumen-health.example/sitemap.xml`,
         url: "https://lumen-health.example/careers",
         depth: 1,
         html: `<!doctype html>
-<html><head><title>Careers — Lumen Health</title></head>
+<html><head><title>Careers, Lumen Health</title></head>
 <body>
   <h1>Build care coordination with us</h1>
   <p>We are hiring across product and engineering.</p>
@@ -206,7 +206,7 @@ Sitemap: https://kestrel-studio.example/sitemap.xml`,
         depth: 0,
         html: `<!doctype html>
 <html><head>
-  <title>Kestrel Studio — brand and web design for founders</title>
+  <title>Kestrel Studio, brand and web design for founders</title>
   <meta name="description" content="A small brand and web design studio for early-stage founders." />
   <meta name="generator" content="Webflow" />
   <script src="/js/webflow.js"></script>
@@ -223,7 +223,7 @@ Sitemap: https://kestrel-studio.example/sitemap.xml`,
         url: "https://kestrel-studio.example/contact",
         depth: 1,
         html: `<!doctype html>
-<html><head><title>Contact — Kestrel Studio</title></head>
+<html><head><title>Contact, Kestrel Studio</title></head>
 <body>
   <h1>Start a project</h1>
   <p>Tell us about the work. We reply within two business days.</p>

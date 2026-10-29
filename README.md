@@ -1,8 +1,8 @@
 <div align="center">
-<img src="docs/demo.gif" alt="LeadScout — signals, evidence and ICP score for a researched lead" width="100%" />
+<img src="docs/demo.gif" alt="LeadScout, signals, evidence and ICP score for a researched lead" width="100%" />
 </div>
 
-<sub>Recorded from the live demo — <a href="docs/demo.mp4">MP4</a> · <a href="docs/screenshot.png">static frame</a></sub>
+<sub>Recorded from the live demo, <a href="docs/demo.mp4">MP4</a> · <a href="docs/screenshot.png">static frame</a></sub>
 
 # LeadScout
 
@@ -30,7 +30,7 @@ reproducible and no live requests are made.
 ## What it does
 
 - **Plans a crawl** around robots.txt: user-agent groups, wildcards, longest-match
-  rules, crawl delay, depth and a page budget — with every skipped URL kept and
+  rules, crawl delay, depth and a page budget, with every skipped URL kept and
   explained.
 - **Extracts signals** from marketing HTML: industry, team size, funding,
   technology stack, hiring activity and job titles, office locations, and contact
@@ -123,7 +123,7 @@ matching path rule and gives `Allow` the tie. That is the behaviour most crawler
 implement, and it matters in practice: `Disallow: /careers` with
 `Allow: /careers/engineering` should still let you read the engineering roles.
 An empty `Disallow:` is treated as allow-all rather than as a rule that matches
-every path — a small detail that would otherwise block an entire site.
+every path, a small detail that would otherwise block an entire site.
 
 The plan is a list of decisions, not a list of URLs:
 
@@ -146,7 +146,7 @@ The extractors are heuristics, and the repository is honest about that: team siz
 comes from number-plus-people patterns, locations from a city gazetteer, industry
 from keyword counts, hiring from job-title headings and "N open roles" sentences.
 Those are the parts a production system would replace with an LLM extractor
-before the scoring layer — the output shape stays the same.
+before the scoring layer, the output shape stays the same.
 
 ### The score is a sum of five visible factors
 
@@ -157,12 +157,12 @@ Default weights add to 100:
 | Industry | 15 | exact target industry; half for an adjacent one |
 | Company size | 20 | target band; half for one band away |
 | Technology | 25 | one third of the weight per matching technology, capped |
-| Hiring | 30 | 4+ roles full, 2–3 roles 70%, 1 role 40% |
+| Hiring | 30 | 4+ roles full, 2-3 roles 70%, 1 role 40% |
 | Location | 10 | a city in the target list; 30% for elsewhere |
 
 The score is `points / sum(weights) × 100`, so weights can be changed without
 breaking the scale. The four fixtures rank Lumen Health and Northwind Analytics
-as grade A, Harbor Logistics C/D and Kestrel Studio D — which is the point: a
+as grade A, Harbor Logistics C/D and Kestrel Studio D, which is the point: a
 logistics company with 900 employees and no engineering hiring is not a buyer for
 a product engineering retainer, however large it is.
 
@@ -171,7 +171,7 @@ a product engineering retainer, however large it is.
 `composeEmail` takes the positive factors that have evidence, turns the top three
 into sentences, and numbers them. The body is a template around those claims plus
 two statements about us (which need no citation, because they are not claims
-about the lead). Below a score of 45 — or with no citable claim — the result is
+about the lead). Below a score of 45, or with no citable claim, the result is
 returned with `sendable: false` and a reason. The demo renders that as a red
 banner instead of hiding it.
 
@@ -183,16 +183,16 @@ npm test
 
 52 tests on `node:test`:
 
-- `robots.test.js` — parsing, wildcards, longest match, allow-tie, empty rules,
+- `robots.test.js`: parsing, wildcards, longest match, allow-tie, empty rules,
   agent groups, crawl delay.
-- `signals.test.js` — HTML text extraction, titles, tech detection per fixture,
+- `signals.test.js`: HTML text extraction, titles, tech detection per fixture,
   size bands, locations, hiring roles, funding, industry, contact routes.
-- `score.test.js` — ranking order, factor caps, evidence on positive factors,
+- `score.test.js`: ranking order, factor caps, evidence on positive factors,
   weight changes, grade thresholds, a custom ICP profile.
-- `email.test.js` — every citation quote must appear on the cited page, markers
+- `email.test.js`: every citation quote must appear on the cited page, markers
   resolve to the ledger, unsendable drafts are flagged, no-evidence leads produce
   no claims.
-- `crawl.test.js` — robots skips, depth, page budget, delay, decision accounting,
+- `crawl.test.js`: robots skips, depth, page budget, delay, decision accounting,
   link discovery.
 
 ```bash

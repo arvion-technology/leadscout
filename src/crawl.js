@@ -2,8 +2,8 @@
 //
 // A real crawler has three constraints that matter before a single byte is
 // fetched: robots.txt, depth and a page budget. This module makes the plan
-// explicit — every URL in the pre-crawled fixture is either allowed, skipped by
-// robots, skipped by depth, or skipped by budget — so the demo can show the
+// explicit, every URL in the pre-crawled fixture is either allowed, skipped by
+// robots, skipped by depth, or skipped by budget, so the demo can show the
 // decisions instead of claiming "we respect robots".
 
 import { crawlDelayFor, isAllowed, parseRobots } from "./robots.js";

@@ -2,7 +2,7 @@
 //
 // Rule: every sentence about the lead is a claim with a citation, and every
 // citation is a URL plus the exact sentence it came from. Sentences about us are
-// allowed to be uncited — they are not facts about the lead. When the score is
+// allowed to be uncited, they are not facts about the lead. When the score is
 // too low the composer still returns the draft, but marks it unsendable and says
 // why, because a "personalised" email with nothing to cite is spam with a
 // template.
@@ -10,7 +10,7 @@
 const SENDER = {
   name: "Arvion Technologies",
   url: "https://arviontech.net",
-  signature: "— Arvion Technologies, Kathmandu",
+  signature: ", Arvion Technologies, Kathmandu",
 };
 
 function claimText(factor, signals) {

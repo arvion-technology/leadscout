@@ -106,9 +106,9 @@ export function scoreLead(signals, profile = DEFAULT_PROFILE) {
   const score = max ? Math.round((points / max) * 100) : 0;
   const grade = score >= 80 ? "A" : score >= 65 ? "B" : score >= 45 ? "C" : "D";
   const verdict =
-    grade === "A" ? "strong fit — write to them this week"
+    grade === "A" ? "strong fit, write to them this week"
       : grade === "B" ? "worth a conversation"
-        : grade === "C" ? "weak fit — keep in the long list"
+        : grade === "C" ? "weak fit, keep in the long list"
           : "not a fit for this offer";
   return { score, grade, verdict, points: Math.round(points * 10) / 10, max, factors };
 }

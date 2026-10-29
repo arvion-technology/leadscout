@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark" />
-  <title>LeadScout — grounded lead research and outreach</title>
+  <title>LeadScout | grounded lead research and outreach</title>
   <meta name="description" content="Robots-aware crawl planning, explainable ICP scoring and citation-grounded outreach emails. Four pre-crawled fixtures, no API key." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M50 9 L91 91 H73 L50 52 L27 91 H9 Z' fill='%23f5c26b'/><circle cx='50' cy='31' r='6.6' fill='%230b0f1a'/><path d='M50 52 L67 90 H33 Z' fill='%230b0f1a'/></svg>" />
   <link rel="stylesheet" href="arvion.css" />
@@ -66,7 +66,7 @@
               <p class="lede">Four companies, pre-crawled. Every signal keeps the sentence and URL it came from, and the ICP score shows the points each factor earned.</p>
             </div>
             <span class="spacer"></span>
-            <span class="badge mono" id="rank-badge">–</span>
+            <span class="badge mono" id="rank-badge">, </span>
           </div>
 
           <div class="stat-grid" id="lead-stats" style="margin-bottom:16px"></div>
@@ -85,10 +85,10 @@
               <div class="card-head">
                 <div>
                   <div class="card-title" id="signals-title">Signals</div>
-                  <div class="card-sub" id="signals-sub">–</div>
+                  <div class="card-sub" id="signals-sub">, </div>
                 </div>
                 <span class="spacer"></span>
-                <span class="badge" id="industry-badge">–</span>
+                <span class="badge" id="industry-badge">, </span>
               </div>
               <div id="signals"></div>
             </div>
@@ -97,22 +97,22 @@
               <div class="card-head">
                 <div>
                   <div class="card-title">ICP score</div>
-                  <div class="card-sub" id="score-sub">–</div>
+                  <div class="card-sub" id="score-sub">, </div>
                 </div>
                 <span class="spacer"></span>
-                <span class="badge" id="grade-badge">–</span>
+                <span class="badge" id="grade-badge">, </span>
               </div>
               <div class="score-hero">
                 <div class="score-number" id="score-number">0</div>
                 <div>
-                  <div class="score-verdict" id="score-verdict">–</div>
-                  <div class="small muted" id="score-detail">–</div>
+                  <div class="score-verdict" id="score-verdict">, </div>
+                  <div class="small muted" id="score-detail">, </div>
                 </div>
               </div>
               <div class="factors" id="factors"></div>
               <div class="divider"></div>
               <div class="row small muted">
-                <span id="contact-line">–</span>
+                <span id="contact-line">, </span>
                 <span class="spacer"></span>
                 <a href="#scoring" data-view-link="scoring" class="link">Adjust weights →</a>
               </div>
@@ -130,15 +130,15 @@
             </div>
             <span class="spacer"></span>
             <select class="select" id="outreach-lead" style="width:250px" aria-label="Lead"></select>
-            <span class="badge" id="sendable-badge">–</span>
+            <span class="badge" id="sendable-badge">, </span>
           </div>
 
           <div class="grid" style="grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)">
             <div class="card">
               <div class="card-head">
                 <div>
-                  <div class="card-title" id="email-subject">–</div>
-                  <div class="card-sub" id="email-to">–</div>
+                  <div class="card-title" id="email-subject">, </div>
+                  <div class="card-sub" id="email-to">, </div>
                 </div>
                 <span class="spacer"></span>
                 <button class="btn sm" id="copy-email">Copy email</button>
@@ -147,7 +147,7 @@
               <div class="email-body" id="email-body"></div>
               <div class="divider"></div>
               <div class="row small muted">
-                <span id="email-meta">–</span>
+                <span id="email-meta">, </span>
               </div>
             </div>
 
@@ -170,7 +170,7 @@
             <div>
               <div class="eyebrow">Model</div>
               <h1>Scoring model</h1>
-              <p class="lede">Five weighted factors, 100 points when the weights add to 100. Move a slider and every lead is re-scored and re-ranked — the explanation changes with it.</p>
+              <p class="lede">Five weighted factors, 100 points when the weights add to 100. Move a slider and every lead is re-scored and re-ranked, the explanation changes with it.</p>
             </div>
             <span class="spacer"></span>
             <button class="btn sm" id="reset-weights">Reset weights</button>
@@ -178,15 +178,15 @@
 
           <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.5fr)">
             <div class="card">
-              <div class="card-head"><div class="card-title">Weights</div><span class="spacer"></span><span class="small muted" id="weights-total">–</span></div>
+              <div class="card-head"><div class="card-title">Weights</div><span class="spacer"></span><span class="small muted" id="weights-total">, </span></div>
               <div id="weight-sliders"></div>
               <div class="divider"></div>
               <div class="small muted">
                 <div class="kv">
-                  <dt>Target industries</dt><dd id="profile-industries">–</dd>
-                  <dt>Target sizes</dt><dd id="profile-sizes">–</dd>
-                  <dt>Stack overlap</dt><dd id="profile-stacks">–</dd>
-                  <dt>Locations</dt><dd id="profile-locations">–</dd>
+                  <dt>Target industries</dt><dd id="profile-industries">, </dd>
+                  <dt>Target sizes</dt><dd id="profile-sizes">, </dd>
+                  <dt>Stack overlap</dt><dd id="profile-stacks">, </dd>
+                  <dt>Locations</dt><dd id="profile-locations">, </dd>
                 </div>
               </div>
             </div>
@@ -207,7 +207,7 @@
               <p class="lede">The plan is computed before fetching: robots rules, depth, page budget and crawl delay. Blocked URLs stay in the table with the rule that blocked them.</p>
             </div>
             <span class="spacer"></span>
-            <span class="badge mono" id="crawl-summary">–</span>
+            <span class="badge mono" id="crawl-summary">, </span>
           </div>
 
           <div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.6fr)">
@@ -236,10 +236,10 @@
                   </select>
                 </div>
                 <div class="divider"></div>
-                <div class="small muted" id="crawl-notes">–</div>
+                <div class="small muted" id="crawl-notes">, </div>
               </div>
               <div class="card pad-sm" style="padding:0">
-                <div class="row" style="padding:12px 16px"><span class="card-title">robots.txt</span><span class="spacer"></span><span class="small mono muted" id="robots-domain">–</span></div>
+                <div class="row" style="padding:12px 16px"><span class="card-title">robots.txt</span><span class="spacer"></span><span class="small mono muted" id="robots-domain">, </span></div>
                 <pre class="code robots" id="robots-text" style="border:0;border-top:1px solid var(--line);border-radius:0;margin:0"></pre>
               </div>
             </div>

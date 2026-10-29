@@ -1,4 +1,4 @@
-// LeadScout demo — rendering only. Signals, scoring, email and crawl planning
+// LeadScout demo, rendering only. Signals, scoring, email and crawl planning
 // all come from ../src/; the demo never re-implements a rule.
 import { SITES, siteById } from "../src/fixtures.js";
 import { extractSignals } from "../src/signals.js";
@@ -54,7 +54,7 @@ function renderStats() {
   const hiring = state.signals.filter((signals) => signals.hiring.hiring).length;
   const stats = [
     { label: "Leads researched", value: rows.length, tone: "gold", note: "four pre-crawled sites" },
-    { label: "Top score", value: rows[0]?.score ?? 0, tone: "green", note: `${rows[0]?.signals.company || "—"} at grade ${rows[0]?.grade || "–"}` },
+    { label: "Top score", value: rows[0]?.score ?? 0, tone: "green", note: `${rows[0]?.signals.company || ", "} at grade ${rows[0]?.grade || ", "}` },
     { label: "Hiring signals", value: hiring, tone: "", note: "sites with open roles" },
     { label: "Average fit", value: Math.round(average), tone: "", note: "at the current weights" },
   ];
@@ -118,7 +118,7 @@ function renderSignals(signals) {
       el("div", { class: "signal-head" },
         el("span", { class: "signal-label", text: "Team size" }),
         el("span", { class: "signal-value", text: signals.size.value ? `${signals.size.value} people` : "unknown" }),
-        el("span", { class: "badge", text: signals.size.band || "–" }),
+        el("span", { class: "badge", text: signals.size.band || ", " }),
         confidenceChip(signals.size.confidence),
       ),
       evidenceBlock(signals.size.evidence),
@@ -256,7 +256,7 @@ function renderOutreach() {
   picker.replaceChildren(
     ...state.signals.map((item) => {
       const score = scoreFor(item);
-      return el("option", { value: item.id, text: `${item.company} — ${score.score} ${score.grade}` });
+      return el("option", { value: item.id, text: `${item.company}, ${score.score} ${score.grade}` });
     }),
   );
   picker.value = signals.id;
